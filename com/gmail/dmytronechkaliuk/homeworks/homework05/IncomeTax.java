@@ -12,11 +12,11 @@ public class IncomeTax {
         System.out.println("\tmore than 25,000, at a rate of 6.7%.");
 
         System.out.print("\nPlease, enter your income amount: $");
-        int income = scanner.nextInt();
+        double income = scanner.nextDouble();
 
         double tax = 0;
         if (income < 0) {
-            System.out.println("Income cannot be negative");
+            System.out.println("Income cannot be negative!");
         } else {
             if (income <= 10000) {
                 tax = income * 0.025;
@@ -25,8 +25,8 @@ public class IncomeTax {
             } else {
                 tax = 10000 * 0.025 + 15000 * 0.043 + (income - 25000) * 0.067;
             }
-        }
 
-        System.out.printf("\nThe tax on income $%d is $%.2f", income, tax);
+            System.out.printf("\nThe tax on income $%.2f is $%.2f", income, tax);
+        }
     }
 }

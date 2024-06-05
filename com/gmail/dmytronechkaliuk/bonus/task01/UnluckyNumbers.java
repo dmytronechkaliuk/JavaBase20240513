@@ -21,14 +21,17 @@ public class UnluckyNumbers {
 
     public static void printShuttles() {
         int index = 0;
-        for (int luckyNumber = 1; luckyNumber <= 100; luckyNumber ++) {
+        for (int luckyNumber = 1; index < 100; luckyNumber ++) {
             if (hasDigit(luckyNumber, 4) || hasDigit(luckyNumber, 9)) {
 
                 continue;
             }
+
             index++;
 
-            System.out.printf("\nShuttle %d has number: %d", index, luckyNumber);
+            // System.out.printf("\nShuttle %d has number: %d", index, luckyNumber);
+
+            System.out.println("Shuttle " + index + " has number: " + luckyNumber);
         }
 
     }

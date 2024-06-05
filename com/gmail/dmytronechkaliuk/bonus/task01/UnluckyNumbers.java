@@ -2,29 +2,13 @@ package com.gmail.dmytronechkaliuk.bonus.task01;
 
 public class UnluckyNumbers {
     public static void main(String[] args) {
-        // System.out.println(hasFour(41));
-        // System.out.println(hasNine(39));
 
         printShuttles();
-
     }
 
-    public static boolean hasFour(int number) {
-        while (number > 0) {
-            if (number % 10 == 4) {
-
-                return true;
-            }
-
-            number /= 10;
-        }
-
-        return  false;
-    }
-
-    public static boolean hasNine(int number) {
-        while (number > 0) {
-            if (number % 10 == 9) {
+    public static boolean hasDigit(int number, int digit) {
+        while (number > 0 ) {
+            if  (number % 10 == digit) {
 
                 return true;
             }
@@ -36,12 +20,15 @@ public class UnluckyNumbers {
     }
 
     public static void printShuttles() {
-        for (int i = 1; i <= 100; i ++) {
-            if (hasFour(i) || hasNine(i)) {
+        int index = 0;
+        for (int luckyNumber = 1; luckyNumber <= 100; luckyNumber ++) {
+            if (hasDigit(luckyNumber, 4) || hasDigit(luckyNumber, 9)) {
+
                 continue;
             }
+            index++;
 
-            System.out.println("Space shuttle: " + i);
+            System.out.printf("\nShuttle %d has number: %d", index, luckyNumber);
         }
 
     }

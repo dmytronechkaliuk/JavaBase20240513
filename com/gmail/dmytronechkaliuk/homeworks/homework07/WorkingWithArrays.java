@@ -91,15 +91,7 @@ public class WorkingWithArrays {
     }
 
     public static void ArithmeticMean(int[] numbers) {
-        int firstNegativeNumber = -1;
-
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] < 0) {
-                firstNegativeNumber = i;
-                break;
-            }
-
-        }
+        int firstNegativeNumber = findFirstNegativeIndex(numbers);
 
         if (firstNegativeNumber == -1) {
             System.out.println("No negative numbers found");
@@ -121,6 +113,17 @@ public class WorkingWithArrays {
         double average = (double) sum / length;
 
         System.out.printf("Arithmetic mean of numbers after the first negative number: %.2f\n", average);
+    }
+
+    public static int findFirstNegativeIndex(int[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] < 0) {
+                return i;
+            }
+
+        }
+
+        return -1;
     }
 
 }

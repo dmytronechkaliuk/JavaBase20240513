@@ -12,12 +12,17 @@ public class WorkingWithArrays {
 
         System.out.println(Arrays.toString(numbers));
 
-        SumOfNegativeNumbers(numbers);
-        NumberOfEvenNumbers(numbers);
-        NumberOfOddNumbers(numbers);
-        SmallestElement(numbers);
-        LargestElement(numbers);
-        ArithmeticMean(numbers);
+        sumNegativeNumbers(numbers);
+
+        int evenNumbers = countEvenNumbers(numbers);
+        System.out.println("Number of even numbers: " + evenNumbers);
+
+        int oddNumbers = numbers.length - evenNumbers;
+        System.out.println("Number of odd numbers: " + oddNumbers);
+
+        minElement(numbers);
+        maxElement(numbers);
+        calculateAverage(numbers);
     }
 
     public static void fillArrayWithRandomNumbers(int[] numbers, int min, int max) {
@@ -26,7 +31,7 @@ public class WorkingWithArrays {
         }
     }
 
-    public static void SumOfNegativeNumbers(int[] numbers) {
+    public static void sumNegativeNumbers(int[] numbers) {
         int count = 0;
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] < 0) {
@@ -38,31 +43,18 @@ public class WorkingWithArrays {
         System.out.println("Sum of negative numbers: " + count);
     }
 
-    public static void NumberOfEvenNumbers(int[] numbers) {
+    public static int countEvenNumbers(int[] numbers) {
         int evenNumbers = 0;
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] % 2 == 0) {
                 evenNumbers++;
             }
-
         }
 
-        System.out.println("Number of even numbers " + evenNumbers);
+        return evenNumbers;
     }
 
-    public static void NumberOfOddNumbers(int[] numbers) {
-        int oddNumbers = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % 2 != 0) {
-                oddNumbers++;
-            }
-
-        }
-
-        System.out.println("Number of odd numbers: " + oddNumbers);
-    }
-
-    public  static void SmallestElement(int[] numbers) {
+    public  static void minElement(int[] numbers) {
         int minElement = 0;
         int minIndex = 0;
         for (int i = 0; i < numbers.length; i++) {
@@ -76,7 +68,7 @@ public class WorkingWithArrays {
         System.out.println("Smallest element: " + minElement + " (with index " + minIndex + ")");
     }
 
-    public static void LargestElement(int[] numbers) {
+    public static void maxElement(int[] numbers) {
         int maxElement = 0;
         int maxIndex = 0;
         for (int i = 0; i < numbers.length; i++) {
@@ -87,29 +79,26 @@ public class WorkingWithArrays {
 
         }
 
-        System.out.println("Smallest element: " + maxElement + " (with index " + maxIndex + ")");
+        System.out.println("Largest element: " + maxElement + " (with index " + maxIndex + ")");
     }
 
-    public static void ArithmeticMean(int[] numbers) {
+    public static void calculateAverage(int[] numbers) {
         int firstNegativeNumber = findFirstNegativeIndex(numbers);
 
         if (firstNegativeNumber == -1) {
             System.out.println("No negative numbers found");
             return;
-        }
-
-        int sum = 0;
-        int length = 0;
-        for (int i = firstNegativeNumber + 1; i < numbers.length; i++) {
-            sum += numbers[i];
-            length++;
-        }
-
-        if (length == 0) {
+        } else if (firstNegativeNumber == numbers.length - 1) {
             System.out.println("No numbers after the first negative number");
             return;
         }
 
+        int sum = 0;
+        for (int i = firstNegativeNumber + 1; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
+
+        int length = numbers.length - firstNegativeNumber - 1;
         double average = (double) sum / length;
 
         System.out.printf("Arithmetic mean of numbers after the first negative number: %.2f\n", average);

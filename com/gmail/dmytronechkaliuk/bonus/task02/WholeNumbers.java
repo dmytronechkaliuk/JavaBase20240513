@@ -39,7 +39,8 @@ public class WholeNumbers {
             firstNumber++;
         }
 
-        System.out.println("Count (while loop): " + count);
+        System.out.println("=== While loop ===");
+        System.out.println("Count: " + count);
     }
 
     public static void doWhileLoop(int firstNumber, int secondNumber) {
@@ -52,7 +53,8 @@ public class WholeNumbers {
             firstNumber++;
         } while (firstNumber < secondNumber);
 
-        System.out.println("Count (do while loop): " + count);
+        System.out.println("=== Do while loop ===");
+        System.out.println("Count: " + count);
     }
 
     public static void forLoop(int firstNumber, int secondNumber) {
@@ -63,7 +65,8 @@ public class WholeNumbers {
             }
         }
 
-        System.out.println("Count (for loop): " + count);
+        System.out.println("=== For loop ===");
+        System.out.println("Count: " + count);
     }
 
 }

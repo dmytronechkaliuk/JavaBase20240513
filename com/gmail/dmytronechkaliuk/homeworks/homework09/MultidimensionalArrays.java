@@ -29,14 +29,14 @@ public class MultidimensionalArrays {
         // System.out.printf("Matrix %dx%d:\n", rows, columns);
         // printMatrix(matrix);
 
-        int sumEvenRows = sumEvenRows(matrix);
-        int sumOddRows = sumOddRows(matrix);
+        int sumEvenRows = sumRows(matrix, true);
+        int sumOddRows = sumRows(matrix, false);
 
         System.out.println("Sum of elements in even rows: " + sumEvenRows);
         System.out.println("Sum of elements in odd rows: " + sumOddRows);
 
-        long productEvenColumns = productEvenColumns(matrix);
-        long productOddColumns = productOddColumns(matrix);
+        long productEvenColumns = productColumns(matrix, true);
+        long productOddColumns = productColumns(matrix, false);
 
         System.out.println("Product of elements in even columns: " + productEvenColumns);
         System.out.println("Product of elements in odd columns: " + productOddColumns);
@@ -60,10 +60,10 @@ public class MultidimensionalArrays {
         }
     }
 
-    public static int sumEvenRows(int[][] matrix) {
+    public static int sumRows(int[][] matrix, boolean isEven) {
         int sum = 0;
         for (int i = 0; i < matrix.length; i++) {
-            if (i % 2 == 0) {
+            if ((i % 2 == 0 && isEven) || (i % 2 != 0 && !isEven)) {
                 for (int j = 0; j < matrix[i].length; j++) {
                     sum += matrix[i][j];
                 }
@@ -73,37 +73,11 @@ public class MultidimensionalArrays {
         return sum;
     }
 
-    public static int sumOddRows(int[][] matrix) {
-        int sum = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            if (i % 2 != 0) {
-                for (int j = 0; j < matrix[i].length; j++) {
-                    sum += matrix[i][j];
-                }
-            }
-        }
-
-        return sum;
-    }
-
-    public static long productEvenColumns(int[][] matrix) {
+    public static long productColumns(int[][] matrix, boolean isEven) {
         long product = 1L;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                if (j % 2 == 0) {
-                    product *= matrix[i][j];
-                }
-            }
-        }
-
-        return product;
-    }
-
-    public static long productOddColumns(int[][] matrix) {
-        long product = 1L;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (j % 2 != 0) {
+                if ((j % 2 == 0 && isEven) || (j % 2 != 0 && !isEven)) {
                     product *= matrix[i][j];
                 }
             }

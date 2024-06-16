@@ -120,7 +120,6 @@ public class TicTacToe {
 
     public static int checkColumns(char[][] board) {
         int count = 0;
-
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[j][i] == 'X') {
@@ -142,7 +141,6 @@ public class TicTacToe {
 
     public static int checkLeft(char[][] board) {
         int count = 0;
-
         for (int i = 0; i < board.length; i++) {
             if (board[i][i] == 'X') {
                 count++;
@@ -156,7 +154,6 @@ public class TicTacToe {
 
     public static int checkRight(char[][] board) {
         int count = 0;
-
         for (int i = 0; i < board.length; i++) {
             if (board[2 - i][i] == 'X') {
                 count++;

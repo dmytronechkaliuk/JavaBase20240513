@@ -32,7 +32,7 @@ public class MultidimensionalArrays {
         printMatrix(matrix);
 
         /*
-        int matrix[][] = {
+        int[][] matrix = {
                 { 67, 1, 43 },
                 { 13, 37, 61 },
                 { 31, 73, 7 }
@@ -42,14 +42,14 @@ public class MultidimensionalArrays {
         // System.out.println("Matrix 3x3: ");
         // printMatrix(matrix);
 
-        int sumEvenRows = sumEvenRows(matrix);
-        int sumOddRows = sumOddRows(matrix);
+        int sumEvenRows = sumRows(matrix, 0);
+        int sumOddRows = sumRows(matrix, 1);
 
         System.out.println("Sum of elements in even rows: " + sumEvenRows);
         System.out.println("Sum of elements in odd rows: " + sumOddRows);
 
-        long productEvenColumns = productEvenColumns(matrix);
-        long productOddColumns = productOddColumns(matrix);
+        long productEvenColumns = productColumns(matrix, 0);
+        long productOddColumns = productColumns(matrix, 1);
 
         System.out.println("Product of elements in even columns: " + productEvenColumns);
         System.out.println("Product of elements in odd columns: " + productOddColumns);
@@ -79,52 +79,22 @@ public class MultidimensionalArrays {
         }
     }
 
-    public static int sumEvenRows(int[][] matrix) {
+    public static int sumRows(int[][] matrix, int initial) {
         int sum = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            if (i % 2 == 0) {
-                for (int j = 0; j < matrix[i].length; j++) {
-                    sum += matrix[i][j];
-                }
+        for (int i = initial; i < matrix.length; i += 2) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                sum += matrix[i][j];
             }
         }
 
         return sum;
     }
 
-    public static int sumOddRows(int[][] matrix) {
-        int sum = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            if (i % 2 != 0) {
-                for (int j = 0; j < matrix[i].length; j++) {
-                    sum += matrix[i][j];
-                }
-            }
-        }
-
-        return sum;
-    }
-
-    public static long productEvenColumns(int[][] matrix) {
+    public static long productColumns(int[][] matrix, int initial) {
         long product = 1L;
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (j % 2 == 0) {
-                    product *= matrix[i][j];
-                }
-            }
-        }
-
-        return product;
-    }
-
-    public static long productOddColumns(int[][] matrix) {
-        long product = 1L;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (j % 2 != 0) {
-                    product *= matrix[i][j];
-                }
+            for (int j = initial; j < matrix[i].length; j += 2) {
+                product *= matrix[i][j];
             }
         }
 
@@ -132,15 +102,15 @@ public class MultidimensionalArrays {
     }
 
     public static boolean isMagicSquare(int[][] matrix) {
-        int sum1 = 0;
-        int sum2 = 0;
+        int firstDiagonalSum = 0;
+        int secondDiagonalSum = 0;
 
         for (int i = 0; i < matrix.length; i++) {
-            sum1 += matrix[i][i];
-            sum2 += matrix[i][matrix.length - 1 - i];
+            firstDiagonalSum += matrix[i][i];
+            secondDiagonalSum += matrix[i][matrix.length - 1 - i];
         }
 
-        if (sum1 != sum2) {
+        if (firstDiagonalSum != secondDiagonalSum) {
             return false;
         }
 
@@ -153,7 +123,7 @@ public class MultidimensionalArrays {
                 columnSum += matrix[j][i];
             }
 
-            if (rowSum != columnSum || columnSum != sum1) {
+            if (rowSum != columnSum || columnSum != firstDiagonalSum) {
                 return false;
             }
         }

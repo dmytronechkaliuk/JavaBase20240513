@@ -9,21 +9,23 @@ public class WorkingWithMethods {
 
         System.out.print("Enter an integer number: ");
         int number = scanner.nextInt();
-        int square = calculateSquare(number);
+        scanner.nextLine();
+        int square = square(number);
         System.out.printf("The square of %d is %d", number, square);
 
         double radius = 3.5;
         double height = 10;
-        double volume = calculateVolume(radius, height);
+        double volume = volume(radius, height);
         System.out.printf("\nThe volume of a cylinder with a radius of %.1f and a height of %.1f is %f", radius, height, volume);
 
         int[] numbers = {10, 20, 30, 40, 50};
         int sum = getSum(numbers);
         System.out.println("\nThe sum of all elements of the array is " + sum);
 
-        String greeting = "Hello, World!";
-        String reversedGreeting = reverseString(greeting);
-        System.out.println("The string is in reverse order: " + reversedGreeting);
+        System.out.print("Enter a string: ");
+        String message = scanner.nextLine();
+        String reversedMessage = reverse(message);
+        System.out.println("The string is in reverse order: " + reversedMessage);
 
         System.out.print("Enter a base: ");
         int base = scanner.nextInt();
@@ -37,41 +39,41 @@ public class WorkingWithMethods {
         scanner.nextLine();
         System.out.print("Enter a text string: ");
         String text = scanner.nextLine();
-        String repeatedText = repeatText(count, text);
+        String repeatedText = repeat(text, count);
         System.out.println(repeatedText);
     }
 
-    public static int calculateSquare(int number) {
+    public static int square(int number) {
         return number * number;
     }
 
-    public static double calculateVolume(double radius, double height) {
+    public static double volume(double radius, double height) {
         return Math.PI * Math.pow(radius, 2) * height;
     }
 
     public static int getSum(int[] numbers) {
         int sum = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            sum += numbers[i];
+        for (int number : numbers) {
+            sum += number;
         }
 
         return sum;
     }
 
-    public static String reverseString(String greeting) {
-        String reversedString = "";
-        for (int i = greeting.length() - 1; i > 0; i--) {
-            reversedString += greeting.charAt(i);
+    public static String reverse(String message) {
+        String reversed = "";
+        for (int i = message.length() - 1; i >= 0; i--) {
+            reversed += message.charAt(i);
         }
 
-        return reversedString;
+        return reversed;
     }
 
     public static int calculatePower(int base, int power) {
         return (int) Math.pow(base, power);
     }
 
-    public static String repeatText(int count, String text) {
+    public static String repeat(String text, int count) {
         String repeatedText = "";
         for (int i = 0; i < count; i++) {
             repeatedText += text;

@@ -1,10 +1,10 @@
 package com.gmail.dmytronechkaliuk.lessons.lesson12;
 
-import com.gmail.dmytronechkaliuk.lessons.lesson12.subpackage.Cat;
+import com.gmail.dmytronechkaliuk.lessons.lesson12.Cat;
 
 public class AnimalRunner {
     public static void main(String[] args) {
-        Cat cat = new Cat("Garfield", 1, "black");
+        /*Cat cat = new Cat("Garfield", 1, "black");
         System.out.printf("A(an) %s cat %s says: \n", cat.getColor(), cat.getName());
         cat.say();
 
@@ -18,6 +18,6 @@ public class AnimalRunner {
 
         Cat clonedCat = new Cat("Garfield", 1, "black");
         System.out.println("cat is cloned: " + (cat == clonedCat));
-        System.out.println("cat equals cloned: " + (cat.equals(clonedCat)));
+        System.out.println("cat equals cloned: " + (cat.equals(clonedCat)));*/
     }
 }

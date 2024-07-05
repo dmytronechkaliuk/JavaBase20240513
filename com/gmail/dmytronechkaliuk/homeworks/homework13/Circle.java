@@ -8,7 +8,7 @@ public class Circle implements GeometricShape {
     }
 
     @Override
-    public double getArea() {
+    public double area() {
         return Math.PI * radius * radius;
     }
 

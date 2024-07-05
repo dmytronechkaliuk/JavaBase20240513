@@ -8,7 +8,7 @@ public class Square implements GeometricShape {
     }
 
     @Override
-    public double getArea() {
+    public double area() {
         return side * side;
     }
 

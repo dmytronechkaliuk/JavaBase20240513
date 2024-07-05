@@ -16,7 +16,7 @@ public class PolymorphismPractice {
         double totalArea = 0;
 
         for (GeometricShape shape : shapes) {
-            totalArea += shape.getArea();
+            totalArea += shape.area();
         }
 
         return totalArea;

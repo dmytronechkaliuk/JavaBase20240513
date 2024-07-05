@@ -10,7 +10,7 @@ public class Triangle implements GeometricShape {
     }
 
     @Override
-    public double getArea() {
+    public double area() {
         return 0.5 * base * height;
     }
 

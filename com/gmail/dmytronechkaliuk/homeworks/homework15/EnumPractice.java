@@ -13,22 +13,11 @@ public class EnumPractice implements Adviser {
     @Override
     public void advise(Day day) {
         switch (day) {
-            case MONDAY:
-            case TUESDAY:
-            case WEDNESDAY:
-            case THURSDAY:
-                System.out.println("Be patient. There is little time left until Friday");
-                break;
-            case FRIDAY:
-                System.out.println("Happy Friday!");
-                break;
-            case SATURDAY:
-            case SUNDAY:
-                System.out.println("It's a good time to visit The Eiffel Tower");
-                break;
-            default:
-                System.out.println("Error. Invalid day...");
-                break;
+            case MONDAY, TUESDAY, WEDNESDAY, THURSDAY
+                    -> System.out.println("Be patient. There is little time left until Friday");
+            case FRIDAY -> System.out.println("Happy Friday!");
+            case SATURDAY, SUNDAY -> System.out.println("It's a good time to visit The Eiffel Tower");
+            default -> System.out.println("Error. Invalid day...");
         }
 
     }
